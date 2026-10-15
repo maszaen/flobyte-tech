@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+@theme {
+  /* Color tokens */
+  --color-canvas: #ffffff;
+  --color-surface: #f6f8fa;
+  --color-surface-deep: #eff2f5;
+  --color-fg: #1f2328;
+  --color-muted: #59636e;
+  --color-faint: #818b98;
+  --color-line: #d1d9e0;
+  --color-line-subtle: #eaeef2;
+  --color-accent: #0969da;
+  --color-accent-hover: #0550ae;
+  --color-accent-subtle: #ddf4ff;
+  --color-success: #1a7f37;
+  --color-success-subtle: #dafbe1;
+  --color-warning: #9a6700;
+  --color-warning-subtle: #fff8c5;
+  --color-danger: #cf222e;
+  --color-danger-subtle: #ffebe9;
+  --color-dark: #24292f;
+
+  /* Typography */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
+    Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+    "Liberation Mono", monospace;
+
+  /* Radius — keep the interface angular */
+  --radius-xs: 3px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+
+  /* Layout */
+  --container-site: 76rem;
+
+  /* Motion */
+  --transition-fast: 120ms;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  @apply bg-canvas text-fg font-sans antialiased;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+::selection {
+  background: var(--color-accent-subtle);
+}
+
+/* Consistent, visible focus ring */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-xs);
+}
+
+/* Prose styles for legal / article content */
+.prose-flo {
+  @apply text-fg;
+}
+.prose-flo h2 {
+  @apply mt-8 mb-3 border-b border-line-subtle pb-2 text-lg font-semibold first:mt-0;
+}
+.prose-flo h3 {
+  @apply mt-6 mb-2 text-base font-semibold;
+}
+.prose-flo p {
+  @apply mb-4 text-[15px] leading-relaxed text-fg;
+}
+.prose-flo ul {
+  @apply mb-4 list-disc space-y-1.5 pl-5 text-[15px];
+}
+.prose-flo ol {
+  @apply mb-4 list-decimal space-y-1.5 pl-5 text-[15px];
+}
+.prose-flo a {
+  @apply text-accent hover:underline;
+}
+.prose-flo code {
+  @apply rounded-xs bg-surface px-1 py-0.5 font-mono text-[13px];
+}
+.prose-flo strong {
+  @apply font-semibold;
+}
